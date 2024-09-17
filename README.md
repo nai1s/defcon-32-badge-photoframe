@@ -42,6 +42,8 @@ Type "help()" for more information.
 Then, select all the files from the `micropython` and right click to upload them to the device. I ran into a permissions error that I had to fix before the device would recognize/execute:  
 `sudo usermod -a -G dialout ihs`
 
+After that you should be able to start the photoframe by unplugging the USB-C cable and restarting the badge or by raining `main.py`.
+
 # Setup an SD Card
 
 Format an SD Card as FAT. I had to use a new one, unfortunately the DEFCON32 badge sd card kept giving me read errors. Once you have it formatted, put as many images as you like on the card - these should be 320 x 240 pixels. Insert the SD Card into the badge, start it up and you should see images loading!
@@ -56,5 +58,7 @@ Format an SD Card as FAT. I had to use a new one, unfortunately the DEFCON32 bad
 | B | Change LED Pattern |
 
 # Future Work
+
+Currently the slideshow is buggy, once you start it you can't stop.
 
 I'd like to use this project as a starting point for [DEFCON photobbomb](https://github.com/nai1s/defcon-badge-photobomb), but I'm stuck on the IR controls. If you want to contribute please try out that repo!
