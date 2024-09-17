@@ -52,8 +52,8 @@ Format an SD Card as FAT. I had to use a new one, unfortunately the DEFCON32 bad
 | --- | ----- |
 | Left | Previous Image |
 | Right | Next Image |
-| Up | Slideshow |
-| Down | Change LED Pattern |
+| A | Slideshow |
+| B | Change LED Pattern |
 
 # Future Work
 

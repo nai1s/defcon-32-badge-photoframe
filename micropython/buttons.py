@@ -4,18 +4,17 @@ from lights import *
 
 
 def left_callback(p):
+    stop_slideshow()
     display_next_image()
 
 def right_callback(p):
+    stop_slideshow()
     display_prev_image()
 
 def a_callback(p):
-    #This is hacky, there are two while loops defined so for now just stop cycling the lights
-    stop_rainbow_cycle()
     toggle_slideshow_mode()
 
 def b_callback(p):
-    stop_slideshow()
     toggle_lights_on()
 
 btn_left = Pin(19, Pin.IN, Pin.PULL_UP)

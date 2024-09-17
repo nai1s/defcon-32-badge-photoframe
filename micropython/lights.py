@@ -3,6 +3,7 @@ from machine import Pin
 import neopixel
 import time
 import machine
+import asyncio
 
 num_pixels = 9
 np = neopixel.NeoPixel(machine.Pin(4), num_pixels)
@@ -11,8 +12,7 @@ turn_lights_on = True
 def toggle_lights_on():
     global turn_lights_on
     turn_lights_on = not turn_lights_on
-    if (turn_lights_on):
-        rainbow_cycle(0)
+    all_same_color((0,0,0))
     
 def stop_rainbow_cycle():
     turn_lights_on = False
@@ -31,16 +31,17 @@ def wheel(pos):
     pos -= 170
     return (pos * 3, 0, 255 - pos * 3)
 
-def rainbow_cycle(wait):
-    while(turn_lights_on):
+async def rainbow_cycle(wait):
+    while(True):
         for j in range(255):
             for i in range(num_pixels):
                 rc_index = (i * 256 // num_pixels) + j
                 np[i] = wheel(rc_index & 255)
-            np.write()
-            time.sleep(0.01)
-            if (not turn_lights_on):
-                break
+            if (turn_lights_on):
+                    np.write()
+                    await asyncio.sleep(0.01)
+            else:
+                all_same_color((0,0,0))
 
 def all_same_color(color):
     for i in range(num_pixels):
