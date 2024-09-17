@@ -1,20 +1,22 @@
 from machine import Pin
-from lights import all_same_color
 from screen import *
+from lights import *
+
 
 def left_callback(p):
     display_next_image()
-    all_same_color((255, 255, 0))
 
 def right_callback(p):
     display_prev_image()
-    all_same_color((0, 255, 255))
 
 def a_callback(p):
-    all_same_color((255, 0, 0))
+    #This is hacky, there are two while loops defined so for now just stop cycling the lights
+    stop_rainbow_cycle()
+    toggle_slideshow_mode()
 
 def b_callback(p):
-    all_same_color((0, 255, 255))
+    stop_slideshow()
+    toggle_lights_on()
 
 btn_left = Pin(19, Pin.IN, Pin.PULL_UP)
 btn_right = Pin(16, Pin.IN, Pin.PULL_UP)

@@ -6,6 +6,17 @@ import machine
 
 num_pixels = 9
 np = neopixel.NeoPixel(machine.Pin(4), num_pixels)
+turn_lights_on = True
+
+def toggle_lights_on():
+    global turn_lights_on
+    turn_lights_on = not turn_lights_on
+    if (turn_lights_on):
+        rainbow_cycle(0)
+    
+def stop_rainbow_cycle():
+    turn_lights_on = False
+    all_same_color((0,0,0))
 
 def wheel(pos):
     # Input a value 0 to 255 to get a color value.
@@ -21,12 +32,15 @@ def wheel(pos):
     return (pos * 3, 0, 255 - pos * 3)
 
 def rainbow_cycle(wait):
-    for j in range(255):
-        for i in range(num_pixels):
-            rc_index = (i * 256 // num_pixels) + j
-            np[i] = wheel(rc_index & 255)
-        np.write()
-        time.sleep(0.01)
+    while(turn_lights_on):
+        for j in range(255):
+            for i in range(num_pixels):
+                rc_index = (i * 256 // num_pixels) + j
+                np[i] = wheel(rc_index & 255)
+            np.write()
+            time.sleep(0.01)
+            if (not turn_lights_on):
+                break
 
 def all_same_color(color):
     for i in range(num_pixels):
@@ -56,12 +70,4 @@ def init_lights():
     np[6] = (255, 0, 0)
     np[7] = (255, 0, 0)
     np[8] = (255, 0, 0)
-    # np[1] = (0, 128, 0)
-    # np[2] = (0, 0, 64)
-    # np[3] = (255, 0, 0)
-    # np[4] = (0, 128, 0)
-    # np[5] = (0, 0, 64)
-    # np[6] = (255, 0, 0)
-    # np[7] = (0, 128, 0)
-    # np[8] = (0, 0, 64)
     np.write()
