@@ -58,6 +58,6 @@ Format an SD Card as FAT. I had to use a new one, unfortunately the DEFCON32 bad
 
 # Future Work
 
-Currently the slideshow is buggy, once you start it you can't stop. Rewriting the lights/screenshow to better use asynchronous methods and/or a central game loop would help.
+Currently the slideshow is buggy, once you start it you can't stop. Rewriting the lights/screenshow to better use asynchronous methods and/or a central game loop would help, I plan to do this (handwavy motions) eventually.
 
 I'd like to use this project as a starting point for [DEFCON photobbomb](https://github.com/nai1s/defcon-badge-photobomb), but I'm stuck on the IR controls. If you want to contribute please try out that repo!
