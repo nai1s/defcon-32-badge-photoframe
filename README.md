@@ -34,15 +34,14 @@ Install [Thonny](https://thonny.org/) and open it to your code folder. Go to `To
 
 After you select it, you should see a python shell open to the device:  
 ``
-MicroPython v1.23.0-319.g8a14546c2 on 2024-09-14; Raspberry Pi Pico2 with RP2350  
-Type "help()" for more information.
+MicroPython v1.23.0-319.g8a14546c2 on 2024-09-14; Raspberry Pi Pico2 with RP2350.
 ``
 
 
-Then, select all the files from the `micropython` and right click to upload them to the device. I ran into a permissions error that I had to fix before the device would recognize/execute:  
+Then, select all the files from the `micropython` folder and right click to upload them to the device. I ran into a permissions error that I had to fix before the device would recognize/execute code:  
 `sudo usermod -a -G dialout ihs`
 
-After that you should be able to start the photoframe by unplugging the USB-C cable and restarting the badge or by raining `main.py`.
+After that you should be able to start the photoframe by unplugging the USB-C cable and restarting the badge or by running `main.py`.
 
 # Setup an SD Card
 
@@ -59,6 +58,6 @@ Format an SD Card as FAT. I had to use a new one, unfortunately the DEFCON32 bad
 
 # Future Work
 
-Currently the slideshow is buggy, once you start it you can't stop.
+Currently the slideshow is buggy, once you start it you can't stop. Rewriting the lights/screenshow to better use asynchronous methods and/or a central game loop would help.
 
 I'd like to use this project as a starting point for [DEFCON photobbomb](https://github.com/nai1s/defcon-badge-photobomb), but I'm stuck on the IR controls. If you want to contribute please try out that repo!
