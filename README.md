@@ -1,4 +1,4 @@
-# DEFCon Badge Photoframe
+# DEFCON Badge Photoframe
 Photoframe showing images off an SD card using micropython on the DEFCON badge RP2350
 
 Instructions are for a linux system, if you aren't using linux you may need to alter these steps.
